@@ -1,0 +1,9 @@
+{
+	"Lua.diagnostics.disable": [
+		"unused-local",
+		"lowercase-global",
+		"unused-function",
+		"undefined-global"
+	],
+	"Lua.runtime.version": "Lua 5.4"
+}

@@ -1,0 +1,19 @@
+{
+	"id": "RabbitsFirstMod",
+	"name": "Rabbit's First Mod",
+	"version_name": "2023.8.16",
+	"version_code": 1,
+	"author": "https://github.com/spacehare",
+	"homepage": "",
+	"description": "It's my first mod!",
+	"packages": {
+		"Data": {
+			"name": "Data",
+			"entry": "data.lua",
+			"dependencies": [
+				"Main/Data"
+			],
+			"type": "Addon"
+		}
+	}
+}
