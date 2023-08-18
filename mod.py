@@ -11,11 +11,13 @@ mods: dict = yaml.load(MODS_FILENAME.read_text(), Loader=yaml.Loader)
 # with open(MODS_FILENAME, encoding='utf-8') as f:
 #     mods = yaml.load(f, Loader=yaml.Loader)
 target_zip: Path
-DesyncModUploader_args = [mods['uploader']]
+DesyncModUploader_args: list[str] = [mods['uploader']]
 ap = argparse.ArgumentParser()
 
 ap.add_argument('source',
                 help='The mod you want to upload. ZIP or folder')
+ap.add_argument('--no-del', action='store_true',
+                help="Don't delete zip in temp folder after finishing")
 args = ap.parse_args()
 
 new_source_path: Path
@@ -23,7 +25,7 @@ new_source_path: Path
 if args.source in mods:
     print(f'found {args.source} in {MODS_FILENAME}')
     new_source_path = Path(mods[args.source]['path'])
-    DesyncModUploader_args.append(f"-u {mods[args.source]['id']}")
+    DesyncModUploader_args += [f"-u", f"{mods[args.source]['id']}"]
 else:
     mistake = input(
         f'This mod does not exist in {MODS_FILENAME}, do you want to upload a new mod?')
@@ -48,10 +50,10 @@ DesyncModUploader_args.append(str(target_zip))
 
 print(DesyncModUploader_args)
 
-# result = subprocess.run([mods['uploader']],
-#                         capture_output=True,
-#                         text=True)
-# print(result)
+result = subprocess.run(DesyncModUploader_args,
+                        capture_output=True,
+                        text=True)
+print(result)
 
-
-target_zip.unlink()
+if not args.no_del:
+    target_zip.unlink()
