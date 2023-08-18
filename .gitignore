@@ -1,3 +1,7 @@
+# Rabbit
+/.temp/*
+
+# LUA
 # Compiled Lua sources
 luac.out
 
