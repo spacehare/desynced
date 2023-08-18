@@ -42,7 +42,6 @@ data.instructions.rabbit_random_between =
 	func = function(comp, state, cause, from, num, to)
 		local r = Tool.NewRegisterObject(Get(comp, state, from)) -- copy to avoid changing from
 		local g = GetNum(comp, state, num)
-		-- r.num = g == 0 and math.random(r.num, g) or math.random(r.num)
 		if g > r.num then
 			r.num = math.random(r.num, g)
 		elseif g < r.num then
@@ -62,10 +61,9 @@ data.instructions.rabbit_random_between =
 
 data.instructions.rabbit_print =
 {
-	func = function(comp, state, cause, from, to)
+	func = function(comp, state, cause, from)
 		local r = Tool.NewRegisterObject(Get(comp, state, from)) -- copy to avoid changing from
 		print(r.num)
-		Set(comp, state, to, r)
 	end,
 	args = {
 		{ "in", "From", nil, "num" },
