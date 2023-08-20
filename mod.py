@@ -8,8 +8,6 @@ TEMP: Path = Path('.temp')
 MODS_FILENAME: Path = Path('mods.yaml')
 
 mods: dict = yaml.load(MODS_FILENAME.read_text(), Loader=yaml.Loader)
-# with open(MODS_FILENAME, encoding='utf-8') as f:
-#     mods = yaml.load(f, Loader=yaml.Loader)
 target_zip: Path
 DesyncModUploader_args: list[str] = [mods['uploader']]
 ap = argparse.ArgumentParser()
