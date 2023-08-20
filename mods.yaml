@@ -1,6 +1,8 @@
 uploader: R:\Rabbit - Game Dev\DesyncedModUploader-1.0\DesyncedModUploader.exe
 content_mods: N:\SteamLibrary\steamapps\common\Desynced\Desynced\Content\mods
 workshop: N:\SteamLibrary\steamapps\workshop\content\1450900
+
+# path should be relative to this file (mods.yaml)
 RabbitsFirstMod:
   id: 3021710010
   path: RabbitsFirstMod\RabbitsFirstMod
